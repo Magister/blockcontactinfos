@@ -92,7 +92,7 @@ class Blockcontactinfos extends Module
 	{	
 		if (!$this->isCached('blockcontactinfos.tpl', $this->getCacheId()))
 			foreach (Blockcontactinfos::$contact_fields as $field)
-				$this->smarty->assign(strtolower($field), Configuration::get($field));
+				$this->smarty->assign(strtolower($field), str_replace('&#10;', "\r", Configuration::get($field)));
 		return $this->display(__FILE__, 'blockcontactinfos.tpl', $this->getCacheId());
 	}
 	
